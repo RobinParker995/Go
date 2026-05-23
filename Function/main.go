@@ -27,6 +27,34 @@ func divide(a, b float64) (float64, string){
 }
 
 
+//Function as paramter
+func operate(a, b int, op func(int, int) int) {
+	fmt.Println(op(a, b))
+}
+
+//Closure
+func counter() func() int {
+
+	count := 0
+
+	return func() int {
+		count++
+		return count
+	}
+}
+
+//Variadic Functions
+func sum(nums ...int) int {
+
+	total := 0
+
+	for _,n := range nums {
+		total += n
+	}
+
+	return total
+}
+
 
 func main(){
 
@@ -38,5 +66,22 @@ func main(){
 	res, msg := divide(10, 2)
 
 	fmt.Printf("%.2f, %s \n", res, msg)
+
+	//Anoynmous Functions
+	sayHello := func(){
+		fmt.Println("Hello")
+	}
+
+	sayHello()
+
+	operate(25, 32, add)
+
+	c := counter()
+
+	fmt.Println(c())
+	fmt.Println(c())
+	fmt.Println(c())
+
+	fmt.Println(sum(1,2,3,4,5))
 
 }
