@@ -1,0 +1,3 @@
+module Loops
+
+go 1.26.3
